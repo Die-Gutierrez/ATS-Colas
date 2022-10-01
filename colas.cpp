@@ -17,6 +17,15 @@ int main()
     Nodo *frente = NULL;
     Nodo *fin = NULL;
 
+    int dato;
+
+    for(int i=0;i<3;i++)
+    {
+        cout<<"Digite un numero: ";
+        cin>>dato;
+        insertarCola(frente, fin, dato);
+    }
+
 
     return 0;
 }
