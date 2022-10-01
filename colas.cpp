@@ -9,6 +9,7 @@ struct Nodo
     Nodo *siguiente;
 };
 
+//Prototipo de la funcion.
 void insertarCola(Nodo *&frente, Nodo *&fin, int n);
 bool cola_vacia(Nodo *);
 
@@ -50,12 +51,5 @@ void insertarCola(Nodo *&frente, Nodo *&fin, int n)
 // Funcion para determinar si la cola esta vacia o no.
 bool cola_vacia(Nodo *frente)
 {
-    if(frente == NULL)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
+    return (frente == NULL)? true:false;
 }
