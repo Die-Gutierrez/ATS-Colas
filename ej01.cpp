@@ -45,7 +45,20 @@ int main()
             system("pause");
             break;
         case 2:
-            
+            cout<<"Sacando elementos de la cola: ";
+            while(frente != NULL)
+            {
+                quitarCola(frente, fin, dato);
+                if(frente != NULL)
+                {
+                    cout<<dato<<", ";
+                }
+                else
+                {
+                    cout<<dato<<".";
+                }
+            }
+            cout<<endl;
             break;
         case 3:
             
@@ -74,9 +87,20 @@ void agregarCola(Nodo *&frente, Nodo *&fin, char n[])
     fin = nuevo_nodo;
     cout<<"Elemento '"<<n<<"' agregado exitosamente . . ."<<endl;
 }
-void quitarCola(Nodo *&frente, Nodo *&fin, int &n)
+void quitarCola(Nodo *&frente, Nodo *&fin, char n[])
 {
-
+    strcpy(n, frente->dato);
+    Nodo *aux = frente;
+    if(frente == fin)
+    {
+        frente = NULL;
+        fin == NULL;
+    }
+    else
+    {
+        frente = aux->siguiente;
+    }
+    delete aux;
 }
 bool cola_vacia(Nodo *frente)
 {
