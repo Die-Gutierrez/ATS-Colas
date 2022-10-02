@@ -14,8 +14,8 @@ struct Nodo
 };
 
 void agregarCola(Nodo *&, Nodo *&, string, int);
-bool cola_vacia();
-void mostrarCola();
+bool cola_vacia(Nodo *);
+void mostrarCola(Nodo *&, Nodo *&, string &, int &);
 
 int main()
 {
@@ -23,10 +23,11 @@ int main()
     Nodo *fin = NULL;
 
     string nombre;
-    int nElementos, edad;
+    int nElementos, edad, i=0;
 
     cout<<"Digite el total de clientes a ingresar: ";
     cin>>nElementos;
+    // Agregando los datos a la cola.
     for(int i=0;i<nElementos;i++)
     {
         cout<<i+1<<". Introduzca su nombre: ";
@@ -35,7 +36,24 @@ int main()
         cin>>edad;
         agregarCola(frente, fin, nombre, edad);
     }
-    
+    cout<<"Mostrando elementos de la pila: "<<endl;
+    while(frente != NULL)
+    {
+        mostrarCola(frente, fin, nombre, edad);
+        if(frente != NULL)
+        {
+            cout<<i+1<<". Datos del cliente: "<<endl;
+            cout<<"Nombre: "<<nombre<<endl;
+            cout<<"Edad: "<<edad<<endl;
+        }
+        else
+        {
+            cout<<i+1<<". Datos del cliente: "<<endl;
+            cout<<"Nombre: "<<nombre<<endl;
+            cout<<"Edad: "<<edad<<endl;
+        }
+        i += 1;
+    }
 
 
 
@@ -55,15 +73,25 @@ void agregarCola(Nodo *&frente, Nodo *&fin, string nombre, int edad)
         fin->siguiente= nuevo_nodo;
     }
     fin = nuevo_nodo;
+    cout<<"Elemento '"<<nombre<<"' y '"<<edad<<"', agregado exitosamente . . ."<<endl;
 }
 bool cola_vacia(Nodo *frente)
 {
-    if(frente == NULL)
+    return (frente == NULL )? true:false;
+}
+void mostrarCola(Nodo *&frente, Nodo *&fin, string &nombre, int &edad)
+{
+    nombre = frente->nombre;
+    edad = frente->edad;
+    Nodo *aux = frente;
+    if(frente == fin)
     {
-        return true;
+        frente = NULL;
+        fin = NULL;
     }
     else
     {
-        return false;
+        frente = aux->siguiente;
     }
+    delete aux;
 }
